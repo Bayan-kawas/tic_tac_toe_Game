@@ -4,14 +4,18 @@ import 'main.dart';
 
 class Result extends StatefulWidget {
   String mark;
+
   Result(this.mark);
+
   @override
   _ResultState createState() => _ResultState(this.mark);
 }
 
 class _ResultState extends State<Result> {
   String mark;
+
   _ResultState(mark);
+
   @override
   Widget build(BuildContext context) {
     double deviceWidth = MediaQuery.of(context).size.width;
@@ -30,54 +34,55 @@ class _ResultState extends State<Result> {
           ),
           body: Center(
             child: Column(
-            children: <Widget>[
-               Card(
-                child: Container(
-                  height: deviceWidth / 7,
-                  child: Padding(
-                    padding: EdgeInsets.all(10),
-                    child: Text(
-                      "The player with the $winner  is the winner",
-                      style: TextStyle(
-                          fontSize: 20,
-                          fontStyle: FontStyle.italic,
-                          color: Colors.pink),
+              children: <Widget>[
+                Card(
+                  child: Container(
+                    height: deviceWidth / 7,
+                    child: Padding(
+                      padding: EdgeInsets.all(10),
+                      child: Text(
+                        "The player with the $winner  is the winner",
+                        style: TextStyle(
+                            fontSize: 20,
+                            fontStyle: FontStyle.italic,
+                            color: Colors.pink),
+                      ),
                     ),
                   ),
                 ),
-              ),
-              RaisedButton(
-                onPressed: (){
-                  restartGame(context);
-                },
-                color:Colors.grey,
-                child:Text("Restart Game",
-                  style: TextStyle(
-                      fontSize: 20,
-                      fontStyle: FontStyle.italic,
-                      color: Colors.black26),
-                ),
-              )
-            ],
+                RaisedButton(
+                  onPressed: () {
+                    restartGame(context);
+                  },
+                  color: Colors.grey,
+                  child: Text(
+                    "Restart Game",
+                    style: TextStyle(
+                        fontSize: 20,
+                        fontStyle: FontStyle.italic,
+                        color: Colors.black26),
+                  ),
+                )
+              ],
             ),
           ),
         ),
       ),
     );
   }
-  restartGame(context){
+
+  restartGame(context) {
     currentMark = "X";
     marks = [];
-
-    winner="";
-
-
-
-
-    Navigator.push(context, MaterialPageRoute(
-      builder:(context)=>MyGame(),
-    ),
+    print(marks);
+    winner = "";
+    mark="";
+    fillMarks();
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => MyGame(),
+      ),
     );
   }
 }
-
