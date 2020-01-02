@@ -62,7 +62,17 @@ class _CellState extends State<Cell> {
             if (winner != '') {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => Result(mark)),
+                MaterialPageRoute(builder: (context) => Result('The winner is ${winner}')),
+              );
+            }
+            bool draw;
+            draw = isDraw();
+
+            if (draw == true) {
+              winner = "draw";
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => Result("It's a draw")),
               );
             }
           },
@@ -133,4 +143,17 @@ String whoWins() {
   }
 
   return '';
+}
+
+isDraw() {
+  int col;
+  int row;
+  for (row = 0; row < 3; row++) {
+    for (col = 0; col < 3; col++) {
+      if (marks[col][row] == "") {
+        return false;
+      }
+    }
+  }
+  return true;
 }

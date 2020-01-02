@@ -3,18 +3,18 @@ import 'cellContent.dart';
 import 'main.dart';
 
 class Result extends StatefulWidget {
-  String mark;
+  String message;
 
-  Result(this.mark);
+  Result(this.message);
 
   @override
-  _ResultState createState() => _ResultState(this.mark);
+  _ResultState createState() => _ResultState(this.message);
 }
 
 class _ResultState extends State<Result> {
-  String mark;
+  String message;
 
-  _ResultState(mark);
+  _ResultState(this.message);
 
   @override
   Widget build(BuildContext context) {
@@ -34,6 +34,7 @@ class _ResultState extends State<Result> {
           ),
           body: Center(
             child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
                 Card(
                   child: Container(
@@ -41,7 +42,7 @@ class _ResultState extends State<Result> {
                     child: Padding(
                       padding: EdgeInsets.all(10),
                       child: Text(
-                        "The player with the $winner  is the winner",
+                        message,
                         style: TextStyle(
                             fontSize: 20,
                             fontStyle: FontStyle.italic,
@@ -74,9 +75,6 @@ class _ResultState extends State<Result> {
   restartGame(context) {
     currentMark = "X";
     marks = [];
-    print(marks);
-    winner = "";
-    mark="";
     fillMarks();
     Navigator.push(
       context,
